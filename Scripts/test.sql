@@ -5,3 +5,8 @@ select * from course_enrollment;
 select * from courses;
 select * from students;
 select * from tutors;
+
+select stud_id, name, email, dob, phone from students where stud_id = 1;
+-- mybatis-config.xml에서 카멜 지정안해주면 stud_id as studId로 여기서 바꿔줘야 된다.
+
+select stud_id, name, email, dob, substring(phone,1,3) as f, substring(phone,5,3) as m, substring(phone,9,4) as l from students where stud_id = 1;
