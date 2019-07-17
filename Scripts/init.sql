@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS MYBATIS_DEV;
 
 CREATE DATABASE MYBATIS_DEV;
 
-CREATE TABLE MYBATIS_DEV.ADDRESSES ( -- MYBATIS_DEV. ÀÌ°Å ¾ÈºÙÀÌ¸é mysql¿¡ Å×ÀÌºíÀÌ »ý±è. ±×·¡¼­ µ¥ÀÌÅÍº£ÀÌ½º¸íÀ» ¾Õ¿¡ ºÙ¿©Áá´Ù.
+CREATE TABLE MYBATIS_DEV.ADDRESSES ( -- MYBATIS_DEV. ï¿½Ì°ï¿½ ï¿½Èºï¿½ï¿½Ì¸ï¿½ mysqlï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ¿ï¿½ ï¿½Ù¿ï¿½ï¿½ï¿½ï¿½.
   ADDR_ID INT(11) NOT NULL AUTO_INCREMENT,
   STREET VARCHAR(50) NOT NULL,
   CITY VARCHAR(50) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE MYBATIS_DEV.COURSE_ENROLLMENT(
 );
 
 
--- °èÁ¤°ú ±ÇÇÑºÎ¿©
+-- ê³„ì •ê³¼ ê¶Œí•œë¶€ì—¬
 grant all privileges 
 on mybatis_dev.* 
 to 'user_mybatis_dev'@'localhost' 
