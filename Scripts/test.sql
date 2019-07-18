@@ -33,3 +33,7 @@ alter table students auto_increment=100;
 set @cnt = 0;
 update students set students.stud_id = @cnt:=@cnt+1;
 
+select * from addresses where addr_id = 3;
+
+select stud_id, name, email, phone, a.addr_id, street, city, state, zip, country from students s left join addresses a on s.addr_id = a.addr_id;
+

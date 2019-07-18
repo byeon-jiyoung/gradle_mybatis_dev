@@ -57,4 +57,59 @@
 	<select id="selectStudentMapByAll" resultType="map">
 		<include refid="selectSql"/>
 	</select>
+	
+	<!-- 297,298p -->
+	<resultMap type="Student" id="resultStudent">
+		<!-- 이거 안해주면 null 출력됨 -->
+		<id column="stud_id" property="studId"/>
+		<result column="name" property="name"/>
+		<result column="email" property="email"/>
+		<result column="phone" property="phone"/>
+		<result column="dob" property="dob"/>
+	</resultMap>
+	
+	<resultMap type="Student" id="resultExtStudent" extends="resultStudent">
+		<association property="address" resultMap="kr.or.yi.gradle_mybatis_dev.dao.AddressMapper.resultAddress" />
+	</resultMap>
+	
+	
+<!-- 
+	설명하려고 추가한거. 위에 방법 사용하는게 젤 좋대
+	<resultMap type="Student" id="resultStudent">
+		<id column="stud_id" property="studId"/>
+		<result column="addr_id" property="address.addrId"/>
+		<result column="street" property="address.street"/>
+		<result column="city" property="address.city"/>
+		<result column="state" property="address.state"/>
+		<result column="zip" property="address.zip"/>
+		<result column="country" property="address.country"/>
+	</resultMap>
+	
+	<resultMap type="Student" id="basicStudent">
+		<id column="stud_id" property="studId"/>
+		<result column="name" property="name"/>
+	</resultMap>
+	
+	253p
+	<resultMap type="Student" id="extStudent" extends="basicStudent">
+		
+		<result column="addr_id" property="address.addrId"/>
+		<result column="street" property="address.street"/>
+		<result column="city" property="address.city"/>
+		<result column="state" property="address.state"/>
+		<result column="zip" property="address.zip"/>
+		<result column="country" property="address.country"/> 
+		이 방법사용하면 basicStudent에 아무것도 추가안해도 다 출력된다.
+		
+		<association property="address" resultMap="kr.or.yi.gradle_mybatis_dev.dao.AddressMapper.resultAddress" /> 근데 이렇게 하면 basicStudent에서 추가해준거만 출력되고 추가안한거는 null뜬다.
+	</resultMap>
+ -->
+	
+	
+	<select id="selectStudentByNoResultMapExtends" parameterType="Student" resultMap="resultExtStudent">
+	<!-- <select id="selectStudentByNoResultMapExtends" parameterType="Student" resultMap="resultStudent"> -->
+	<!-- <select id="selectStudentByNoResultMapExtends" parameterType="Student" resultMap="extStudent"> -->
+		select stud_id, name, email, phone, dob, a.addr_id, street, city, state, zip, country from students s left join addresses a on s.addr_id = a.addr_id
+		<include refid="whereSql"/>
+	</select>
 </mapper>

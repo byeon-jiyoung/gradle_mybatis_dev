@@ -47,7 +47,6 @@ public class Address {
 	
 	@Override
 	public String toString() {
-		return String.format("Address [addrId=%s, street=%s, city=%s, state=%s, zip=%s, country=%s]", addrId, street,
-				city, state, zip, country);
+		return String.format("Address [addrId=%s, street=%s, city=%s, state=%s, zip=%s, country=%s]", addrId, street, city, state, zip, country);
 	}
 }

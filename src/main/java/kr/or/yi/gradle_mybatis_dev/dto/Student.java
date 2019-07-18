@@ -8,6 +8,7 @@ public class Student {
 	private String email;
 	private PhoneNumber phone;
 	private Date dob;
+	private Address address;
 	
 	public int getStudId() {
 		return studId;
@@ -48,10 +49,18 @@ public class Student {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	@Override
 	public String toString() {
-		return String.format("Student [%s, %s, %s, %s, %s]", studId, name, email, dob, phone);
+		return String.format("Student [%s, %s, %s, %s, %s, %s]", studId, name, email, dob, phone, address);
 	}
 
 }

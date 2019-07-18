@@ -17,4 +17,5 @@ public interface StudentMapper {
 					//원래는 Student객체를 넣는게 맞지만, 이런 방법도 있다는걸 알려주려고 교재따라 한번 해봤음(235p)
 	
 	List<Map<String, Object>> selectStudentMapByAll();
+	Student selectStudentByNoResultMapExtends(Student student);
 }
