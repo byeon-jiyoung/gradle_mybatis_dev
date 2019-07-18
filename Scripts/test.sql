@@ -28,7 +28,8 @@ INSERT INTO STUDENTS (NAME,EMAIL,PHONE,DOB,BIO,PIC,ADDR_ID) VALUES
  ('김우빈','kim@gmail.com','123-123-1234','1988-04-25',NULL,NULL,3),
  ('김재욱','kim2@gmail.com','789-456-1234','1990-08-15',NULL,NULL,4);
 
+alter table students auto_increment=100;
+
 set @cnt = 0;
 update students set students.stud_id = @cnt:=@cnt+1;
 
-alter table students auto_increment=100;

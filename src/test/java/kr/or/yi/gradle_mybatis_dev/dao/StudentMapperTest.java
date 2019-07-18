@@ -5,16 +5,21 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import kr.or.yi.gradle_mybatis_dev.AbstractTest;
 import kr.or.yi.gradle_mybatis_dev.dto.PhoneNumber;
 import kr.or.yi.gradle_mybatis_dev.dto.Student;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StudentMapperTest extends AbstractTest {
 	private static StudentMapper stdDao;
 	
@@ -29,7 +34,7 @@ public class StudentMapperTest extends AbstractTest {
 	}
 
 	@Test
-	public void testSelectStudentByNo() {
+	public void test01SelectStudentByNo() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
 		Student std = new Student();
 		
@@ -41,7 +46,7 @@ public class StudentMapperTest extends AbstractTest {
 	}
 	
 	@Test
-	public void testSelectStudentByNoWithResultMap() {
+	public void test02SelectStudentByNoWithResultMap() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
 		Student std = new Student();
 		
@@ -53,7 +58,7 @@ public class StudentMapperTest extends AbstractTest {
 	}
 	
 	@Test
-	public void testSelectStudentByAll() {
+	public void test03SelectStudentByAll() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
 		List<Student> lists = stdDao.selectStudentByAll();
 		log.debug(lists.toString());
@@ -61,7 +66,7 @@ public class StudentMapperTest extends AbstractTest {
 	}
 	
 	@Test
-	public void testInsertStudent() {
+	public void test04InsertStudent() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
 		
 		Calendar newDate = GregorianCalendar.getInstance();
@@ -76,11 +81,11 @@ public class StudentMapperTest extends AbstractTest {
 		int res = stdDao.insertStudent(stu);
 		Assert.assertEquals(1, res);
 		
-		testSelectStudentByAll();
+		test03SelectStudentByAll();
 	}
 	
 	@Test
-	public void testInsertStudentAutoInc() {
+	public void test05InsertStudentAutoInc() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
 		
 		Calendar newDate = GregorianCalendar.getInstance();
@@ -94,11 +99,11 @@ public class StudentMapperTest extends AbstractTest {
 		int res = stdDao.insertStudent(stu);
 		Assert.assertEquals(1, res);
 		
-		testSelectStudentByAll();
+		test03SelectStudentByAll();
 	}
 	
 	@Test
-	public void testUpdateStudent() {
+	public void test06UpdateStudent() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
 
 		Student stu = new Student();
@@ -119,10 +124,25 @@ public class StudentMapperTest extends AbstractTest {
 	}
 	
 	@Test
-	public void testDeleteStudent() {
+	public void test07DeleteStudent() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
 		
 		int dStu = stdDao.deleteStudent(3);
 		Assert.assertSame(1, dStu);
+	}
+	
+	@Test
+	public void test08SelectStudentMapByAll() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+		
+		List<Map<String, Object>> list = stdDao.selectStudentMapByAll();
+		Assert.assertNotNull(list);
+		
+		for(Map<String, Object> e : list) {
+//			log.debug(e.toString()); 이거는 value값만 출력됨
+			for(Entry<String, Object> ee:  e.entrySet()) {
+				log.debug(String.format("key(%s) -> value(%s)", ee.getKey(), ee.getValue()));
+			}
+		}
 	}
 }
