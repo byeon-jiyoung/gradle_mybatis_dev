@@ -21,8 +21,8 @@
 		<include refid="whereSql"/>
 	</select>
 	
-	<resultMap type="Student" id="stdResult">
-		<id column="stud_id" property="studId"/>
+	<resultMap type="Student" id="stdResult" extends="resultStudent">
+		<!-- <id column="stud_id" property="studId"/> 확장해줘서 이거 없애도 됨-->
 		<result column="f" property="phone.countryCode"/> <!-- resultMap을 이용하려면 여기서는 생성자 호출 못해서 sql을 수정해주는 방법을 이용해야한다. -->
 		<result column="m" property="phone.stateCode"/>
 		<result column="l" property="phone.number"/>
@@ -74,7 +74,7 @@
 	
 	
 <!-- 
-	설명하려고 추가한거. 위에 방법 사용하는게 젤 좋대
+	설명하려고 추가한거. 위에 방법 사용하는게 젤 좋대.
 	<resultMap type="Student" id="resultStudent">
 		<id column="stud_id" property="studId"/>
 		<result column="addr_id" property="address.addrId"/>
