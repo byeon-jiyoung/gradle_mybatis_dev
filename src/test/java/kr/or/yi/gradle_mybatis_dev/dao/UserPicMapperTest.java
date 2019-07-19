@@ -113,6 +113,7 @@ public class UserPicMapperTest extends AbstractTest {
 			bos.write(userPic.getPic()); // try resoursce문으로 지정한 이 파일경로를 통해서 파일이 만들어 질거다
 		}
 		return pic;
+		
 	}
 	
 	//@Test
