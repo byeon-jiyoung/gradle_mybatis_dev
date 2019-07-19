@@ -17,8 +17,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</typeAliases>
 	
 	<typeHandlers>
-		<package name="kr.or.yi.gradle_mybatis_dev.typehandlers"/>
-	</typeHandlers> <!-- 이거 안해주면 null들어간다 -->
+		<typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="Gender"/>
+		<package name="kr.or.yi.gradle_mybatis_dev.typehandlers"/> <!-- 이거 안해주면 null들어간다 -->
+	</typeHandlers>
 	
 	<environments default="development">
 		<environment id="development">

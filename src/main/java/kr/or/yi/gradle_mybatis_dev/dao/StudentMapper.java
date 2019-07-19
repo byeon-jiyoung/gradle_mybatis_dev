@@ -18,4 +18,6 @@ public interface StudentMapper {
 	
 	List<Map<String, Object>> selectStudentMapByAll();
 	Student selectStudentByNoResultMapExtends(Student student);
+	
+	int insertStudentEnum(Student student);
 }

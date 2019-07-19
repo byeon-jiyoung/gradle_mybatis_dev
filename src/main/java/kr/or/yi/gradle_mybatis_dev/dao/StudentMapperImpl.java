@@ -82,4 +82,13 @@ public class StudentMapperImpl implements StudentMapper {
 		}
 	}
 
+	@Override
+	public int insertStudentEnum(Student student) {
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()) {
+			int res = sqlSession.insert(namespace + "insertStudentEnum", student);
+			sqlSession.commit(); //이거 안하면 DB에 안들어간다
+			return res;
+		}
+	}
+
 }
