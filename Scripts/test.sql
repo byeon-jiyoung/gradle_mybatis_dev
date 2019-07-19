@@ -41,3 +41,5 @@ select * from tutors;
 select * from courses;
 
 select t.tutor_id, t.name as tutor_name, email, course_id, c.name, description, start_date, end_date from tutors t left join courses c on t.tutor_id = c.tutor_id where t.tutor_id = 1;
+
+desc students;
