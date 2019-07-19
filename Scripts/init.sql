@@ -65,4 +65,14 @@ to 'user_mybatis_dev'@'localhost'
 identified by 'rootroot';
 
 
+-- gender column 추가
 alter table students add gender tinyint unsigned;
+
+
+-- user_pics 테이블 추가
+create table mybatis_dev.user_pics(
+	id integer auto_increment primary key,
+	name varchar(50) not null,
+	pic longblob,
+	bio longtext
+);

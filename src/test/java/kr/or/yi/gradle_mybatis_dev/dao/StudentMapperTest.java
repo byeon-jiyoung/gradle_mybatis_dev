@@ -180,12 +180,15 @@ public class StudentMapperTest extends AbstractTest {
 		Student selStd = stdDao.selectStudentByNo(stu);
 		log.debug(selStd.toString());
 		
-//		stu.setStudId(5);
-//		stu.setName("홍길순");
-//		stu.setGender(Gender.MALE);
-//		stdDao.insertStudentEnum(stu);
-//		
-//		selStd = stdDao.selectStudentByNo(stu);
-//		log.debug(selStd.toString());
+		stu.setStudId(5);
+		stu.setName("홍길순");
+		stu.setGender(Gender.MALE);
+		stdDao.insertStudentEnum(stu);
+		
+		selStd = stdDao.selectStudentByNo(stu);
+		log.debug(selStd.toString());
+		
+		stdDao.deleteStudent(3);
+		stdDao.deleteStudent(5);
 	}
 }
