@@ -4,6 +4,7 @@ package kr.or.yi.gradle_mybatis_dev.dao;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -190,5 +191,28 @@ public class StudentMapperTest extends AbstractTest {
 		
 		stdDao.deleteStudent(3);
 		stdDao.deleteStudent(5);
+	}
+	
+	@Test
+	public void test11SelectStudentByMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("name", "Timothy");
+		map.put("email", "timothy@gmail.com");
+		
+		Student std = stdDao.selectStudentByMap(map);
+		log.debug(std.toString());
+		
+		map.remove("email");
+		std = stdDao.selectStudentByMap(map);
+		log.debug(std.toString());
+		
+		map.clear(); //clear는 다 삭제
+		map.put("email", "timothy@gmail.com");
+		std = stdDao.selectStudentByMap(map);
+		log.debug(std.toString());
+		
+		Assert.assertNotNull(std);
 	}
 }

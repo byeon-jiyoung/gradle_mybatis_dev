@@ -46,3 +46,5 @@ desc students;
 
 select * from user_pics;
 desc user_pics;
+
+delete from user_pics where id = 1;

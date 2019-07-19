@@ -116,5 +116,21 @@
 	
 	<insert id="insertStudentEnum" parameterType="Student">
 		insert into students(stud_id, name, email, phone, dob, gender) values (#{studId},#{name},#{email},#{phone},#{dob},#{gender})
-	</insert>	
+	</insert>
+	
+	<sql id="whereNameAndEmail">
+		<where>
+			<if test="name != null">
+				name = #{name}
+			</if>
+			<if test="email != null">
+				and email = #{email}
+				<!-- 위에 조건이 참이 아니면 자동으로 and는 빠진다 -->
+			</if>
+		</where>
+	</sql>
+	<select id="selectStudentByMap" parameterType="map" resultType="Student">
+		<include refid="selectSql"></include>
+		<include refid="whereNameAndEmail"></include>	
+	</select>
 </mapper>

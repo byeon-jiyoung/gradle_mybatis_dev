@@ -91,4 +91,12 @@ public class StudentMapperImpl implements StudentMapper {
 		}
 	}
 
+	@Override
+	public Student selectStudentByMap(Map<String, String> map) {
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()) {
+			return sqlSession.selectOne(namespace + "selectStudentByMap", map);
+								//한개밖에 없다는 가정하에 selectOne. 만약에 여러개있으면 selectList로 해야함!!
+		}
+	}
+
 }

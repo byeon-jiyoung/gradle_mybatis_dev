@@ -20,4 +20,5 @@ public interface StudentMapper {
 	Student selectStudentByNoResultMapExtends(Student student);
 	
 	int insertStudentEnum(Student student);
+	Student selectStudentByMap(Map<String, String> map); //매개변수를 해쉬맵으로 전달(여러개 입력파라미터전달방법이다!!!)
 }

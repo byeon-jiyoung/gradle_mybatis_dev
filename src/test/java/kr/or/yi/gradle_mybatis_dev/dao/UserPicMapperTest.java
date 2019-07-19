@@ -116,7 +116,7 @@ public class UserPicMapperTest extends AbstractTest {
 		
 	}
 	
-	//@Test
+	//@Test 쌤꺼보고체크하세요
 	public void test03DeleteUserPic() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
 		
