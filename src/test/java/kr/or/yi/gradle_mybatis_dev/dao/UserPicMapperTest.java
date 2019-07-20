@@ -116,7 +116,7 @@ public class UserPicMapperTest extends AbstractTest {
 		
 	}
 	
-	//@Test 쌤꺼보고체크하세요
+	@Test
 	public void test03DeleteUserPic() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
 		
@@ -127,10 +127,14 @@ public class UserPicMapperTest extends AbstractTest {
 		Assert.assertEquals(1, res);
 		
 		File pics = new File(System.getProperty("user.dir") + "\\pics");
-		if(!pics.exists()) {
+		if(pics.exists()) {
 			for(File file : pics.listFiles()) {
 				file.delete();
 			}
+			
+			//String[] list() : 디렉토리의 파일목록(디렉토리 포함)을 String배열로 반환한다.
+			//String[] list(FilenameFilter filter) :  FilenameFilter인스턴스에 구현된 조건에 맞는 파일을 String배열로 반환한다.
+			//File[] listFiles() :  디렉토리의 파일목록(디렉토리 포함)을 File배열로 반환한다.
 		}
 		pics.delete();
 	}
