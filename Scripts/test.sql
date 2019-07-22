@@ -48,3 +48,6 @@ select * from user_pics;
 desc user_pics;
 
 delete from user_pics where id = 1;
+
+
+select course_id, name, description, start_date, end_date from courses    where and name like '%java%';

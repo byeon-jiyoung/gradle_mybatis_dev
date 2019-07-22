@@ -43,4 +43,16 @@
 			</otherwise>
 		</choose>
 	</select>
+	
+	<select id="selectCourseByTrim" parameterType="map" resultMap="resultCourse">
+		select course_id, name, description, start_date, end_date from courses
+		<trim prefix="where" prefixOverrides="and/or">
+			<if test="tutorId != null">
+				tutor_id = #{tutorId}
+			</if>
+			<if test="courseName != null">
+				and name like #{courseName}
+			</if>	
+		</trim>
+	</select>
 </mapper>

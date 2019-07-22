@@ -23,7 +23,13 @@ public class CourseMapperImpl implements CourseMapper {
 	public List<Course> selectCourseByChoose(Map<String, Object> map) {
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()) {
 			return sqlSession.selectList(namespace + "selectCourseByChoose", map);
-			//(list니까 return)
+		}
+	}
+
+	@Override
+	public List<Course> selectCourseByTrim(Map<String, Object> map) {
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()) {
+			return sqlSession.selectList(namespace + "selectCourseByTrim", map);
 		}
 	}
 	
