@@ -135,6 +135,6 @@
 	</select>
 	
 	<select id="selectStudentForMap" resultType="Student">
-		select stud_id, name from student	
+		select stud_id, name from students	
 	</select>
 </mapper>

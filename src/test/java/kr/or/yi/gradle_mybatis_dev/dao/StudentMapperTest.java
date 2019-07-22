@@ -220,7 +220,7 @@ public class StudentMapperTest extends AbstractTest {
 	public void test12SelectStudentForMap() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
 		
-		Map<Integer, String> result = new HashMap<Integer, String>();
+		Map<Integer, String> result = stdDao.selectStudentForMap();
 		Assert.assertNotNull(result);
 		
 		for(Entry<Integer, String> e : result.entrySet()) {

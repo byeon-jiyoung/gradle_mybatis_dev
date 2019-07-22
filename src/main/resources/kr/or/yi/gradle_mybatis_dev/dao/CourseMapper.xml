@@ -9,4 +9,38 @@
 		<result property="startDate" column="start_date"/>
 		<result property="endDate" column="end_date"/>
 	</resultMap>
+	
+	<select id="selectCourseByCondition" parameterType="Course" resultMap="resultCourse">
+		select course_id, name, description, start_date, end_date from courses
+		<where>
+			<if test="courseId != null">
+				and course_id = #{courseId}
+								<!-- 키값으로 오기때문에 test와 동일하게 적어줘야 한다 -->
+			</if>
+			<if test="courseName != null">
+				and name like #{courseName} 
+			</if>
+			<if test="startDate != null">
+				and start_date &gt;= #{startDate}
+			</if>
+			<if test="endDate != null">
+				and end_date &lt;= #{endDate}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectCourseByChoose"  parameterType="Course" resultMap="resultCourse">
+		select course_id, name, description, start_date, end_date from courses
+		<choose>
+			<when test="searchBy == 'Tutor'"> <!-- map의 key(searchBy)에 Tutor이 존재하면, -->
+				where tutor_id = #{tutorId} <!-- map.get(tutorId) -->
+			</when>
+			<when test="searchBy == 'CourseName'"> <!-- map.get(searchBy) = 'CourseName' -->
+				where name like #{courseName} <!-- map.get(CourseName) -->
+			</when>
+			<otherwise> <!-- map에 해당하는 키값이 존재하지 않을 경우 기본 검색 -->
+				where end_date &gt;= now()
+			</otherwise>
+		</choose>
+	</select>
 </mapper>
