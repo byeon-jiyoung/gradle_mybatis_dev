@@ -1,8 +1,11 @@
 package kr.or.yi.gradle_mybatis_dev.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.ResultContext;
+import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.yi.gradle_mybatis_dev.dto.Student;
@@ -96,6 +99,26 @@ public class StudentMapperImpl implements StudentMapper {
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()) {
 			return sqlSession.selectOne(namespace + "selectStudentByMap", map);
 								//한개밖에 없다는 가정하에 selectOne. 만약에 여러개있으면 selectList로 해야함!!
+		}
+	}
+
+	@Override
+	public Map<Integer, String> selectStudentForMap() {
+		//리스트로 온 애를 map으로 저장해서 하나씩 불러오는거
+		Map<Integer, String> map = new HashMap<Integer, String>();
+		
+		ResultHandler<Student> resultHandler = new ResultHandler<Student>() {
+			@Override
+			public void handleResult(ResultContext<? extends Student> resultContext) {
+				Student std = resultContext.getResultObject(); //리스트 중 한개를 먼저 가지고 와서
+				map.put(std.getStudId(), std.getName()); //map에 담는다
+				
+			}
+		};
+		
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()) {
+			sqlSession.selectList(namespace + "selectStudentForMap", resultHandler);
+			return map;
 		}
 	}
 

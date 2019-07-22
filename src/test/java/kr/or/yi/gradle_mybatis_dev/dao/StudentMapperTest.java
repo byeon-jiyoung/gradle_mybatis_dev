@@ -215,4 +215,17 @@ public class StudentMapperTest extends AbstractTest {
 		
 		Assert.assertNotNull(std);
 	}
+	
+	@Test
+	public void test12SelectStudentForMap() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+		
+		Map<Integer, String> result = new HashMap<Integer, String>();
+		Assert.assertNotNull(result);
+		
+		for(Entry<Integer, String> e : result.entrySet()) {
+												//key, value값 동시에 검색 가능
+			log.debug(String.format("%d -> %s", e.getKey(), e.getValue()));
+		}
+	}
 }

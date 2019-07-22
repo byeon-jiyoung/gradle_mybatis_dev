@@ -21,4 +21,7 @@ public interface StudentMapper {
 	
 	int insertStudentEnum(Student student);
 	Student selectStudentByMap(Map<String, String> map); //매개변수를 해쉬맵으로 전달(여러개 입력파라미터전달방법이다!!!)
+	
+	//ResultSet처리방식의 재정의
+	Map<Integer, String> selectStudentForMap();
 }

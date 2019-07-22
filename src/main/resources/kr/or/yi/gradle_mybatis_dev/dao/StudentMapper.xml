@@ -133,4 +133,8 @@
 		<include refid="selectSql"></include>
 		<include refid="whereNameAndEmail"></include>	
 	</select>
+	
+	<select id="selectStudentForMap" resultType="Student">
+		select stud_id, name from student	
+	</select>
 </mapper>
